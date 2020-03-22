@@ -18,13 +18,13 @@ pub fn establish_connection() -> Result<MysqlConnection, ConnectionError> {
 fn main() {
     dotenv::dotenv().expect("Couldn't unwrap dotenv");
     let connection = establish_connection().expect("Couldn't establish a connection");
-    // This doesn't work
-    /*    let user: User = diesel::sql_query("CALL get_user(1)")
+    let user: User = diesel::sql_query("CALL get_user(1)")
     .get_result(&connection)
-    .expect("Couldn't get result");*/
-    let user: User = diesel::sql_query("SELECT * FROM users WHERE id = ?")
+    .expect("Couldn't get result");
+    // This work
+/*    let user: User = diesel::sql_query("SELECT * FROM users WHERE id = ?")
         .bind::<diesel::sql_types::Integer, _>(1)
         .get_result(&connection)
-        .expect("Couldn't get result");
+        .expect("Couldn't get result");*/
     dbg!(user);
 }
