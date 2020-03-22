@@ -8,6 +8,5 @@ edition = "2018"
 
 [dependencies]
 dotenv = "*"
-serde = {version = "1.0", features = ["derive"]}
 diesel = {version = "1.0.0", features = ["mysql", "chrono"]}
-chrono = { version = "0.4", features = ["serde"] }
+chrono = { version = "0.4" }
